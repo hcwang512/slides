@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Git Tips</title>
+<meta name="author" content="(Xiao Hanyu)"/>
+
+<link rel="stylesheet" href="./reveal.js/css/reveal.min.css"/>
+<link rel="stylesheet" href="./reveal.js/css/theme/default.css" id="theme"/>
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = './reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section>
+<h1>Git Tips</h1>
+<h2>Xiao Hanyu</h2>
+<h2><a href="mailto:xiaohanyu1988@gmail.com">xiaohanyu1988@gmail.com</a></h2>
+<h2></h2></section>
+
+<section>
+<section id="sec-1" >
+
+<h2>Git Commands</h2>
+</section>
+<section id="sec-1-1" >
+
+<h3>git add</h3>
+<ul class="org-ul">
+<li><code>git add -i</code>
+<ul class="org-ul">
+<li>interactive add:
+</li>
+</ul>
+</li>
+<li><code>git add -p</code>
+<ul class="org-ul">
+<li>patch mode:
+</li>
+<li>useful when you made multiple changes to a single file and you only want to
+commit some part of the changeset.
+</li>
+</ul>
+</li>
+</ul>
+
+</section>
+<section id="sec-1-2" >
+
+<h3>git blame</h3>
+<ul class="org-ul">
+<li><code>git blame /some/path/to/some/file</code>
+<ul class="org-ul">
+<li>ask git "where does a specific line of code comes from?"
+</li>
+</ul>
+</li>
+</ul>
+
+</section>
+<section id="sec-1-3" >
+
+<h3>git branch</h3>
+<ul class="org-ul">
+<li><code>git branch -a</code>
+<ul class="org-ul">
+<li>list all branches, including remote branches
+</li>
+</ul>
+</li>
+<li><code>git branch -d</code>
+<ul class="org-ul">
+<li>delete a fully merged branch
+</li>
+</ul>
+</li>
+<li><code>git branch -D</code>
+<ul class="org-ul">
+<li>force delete a branch
+</li>
+</ul>
+</li>
+</ul>
+
+</section>
+<section id="sec-1-4" >
+
+<h3>git checkout</h3>
+<ul class="org-ul">
+<li><code>git checkout .</code>
+<ul class="org-ul">
+<li>remove all changes of all tracked files
+</li>
+</ul>
+</li>
+</ul>
+
+</section>
+<section id="sec-1-5" >
+
+<h3>git cherry-pick</h3>
+<ul class="org-ul">
+<li><code>git cherry-pick &lt;commit-id&gt;</code>
+<ul class="org-ul">
+<li>import bugfixes from upstream
+</li>
+</ul>
+</li>
+</ul>
+
+</section>
+<section id="sec-1-6" >
+
+<h3>git clean</h3>
+<ul class="org-ul">
+<li><code>git clean -n</code>
+<ul class="org-ul">
+<li>only show what would and what would not be removed
+</li>
+</ul>
+</li>
+<li><code>git clean -f</code>
+<ul class="org-ul">
+<li>force remove
+</li>
+</ul>
+</li>
+<li><code>git clean -d</code>
+<ul class="org-ul">
+<li>remove untracked directories
+</li>
+</ul>
+</li>
+</ul>
+
+</section>
+<section id="sec-1-7" >
+
+<h3>git clone</h3>
+<ul class="org-ul">
+<li><code>git clone file://some/path/to/your/repo</code>
+<ul class="org-ul">
+<li>clone from local file system
+</li>
+</ul>
+</li>
+<li><code>git clone username@hostname:/some/path/to/remote/repo</code>
+<ul class="org-ul">
+<li>clone from ssh server
+</li>
+</ul>
+</li>
+<li><code>git clone --depth 1</code>
+<ul class="org-ul">
+<li>shallow clone
+</li>
+<li>improve clone speed
+</li>
+<li>reduce disk space
+</li>
+</ul>
+</li>
+</ul>
+
+</section>
+<section id="sec-1-8" >
+
+<h3>git commit</h3>
+<ul class="org-ul">
+<li><code>git commit -a</code>
+<ul class="org-ul">
+<li>amend the previous commit
+</li>
+</ul>
+</li>
+</ul>
+
+</section>
+<section id="sec-1-9" >
+
+<h3>git rebase</h3>
+<ul class="org-ul">
+<li><code>git rebase -i COMMIT_ID</code>
+<ul class="org-ul">
+<li>p, pick   =&gt; use commit
+</li>
+<li>r, reword =&gt; use commit, but edit the commit message
+</li>
+<li>e, edit   =&gt; use commit, but stop for amending
+</li>
+<li>s, squash =&gt; use commit, but meld into previous commit
+</li>
+<li>f, fixup  =&gt; like "squash", but discard this commit's log message
+</li>
+<li>x, exec   =&gt; run command (the rest of the line) using shell
+</li>
+</ul>
+</li>
+</ul>
+
+</section>
+<section id="sec-1-10" >
+
+<h3>git reset</h3>
+<ul class="org-ul">
+<li><code>git reset --hard</code>
+</li>
+<li><code>git reset --soft</code>
+</li>
+<li><code>git reset --mixed</code>
+</li>
+</ul>
+
+</section>
+<section id="sec-1-11" >
+
+<h3>git reflog</h3>
+<ul class="org-ul">
+<li><code>git reflog show</code>
+</li>
+<li>with
+</li>
+<li><code>git reset --hard</code>
+</li>
+</ul>
+
+</section>
+<section id="sec-1-12" >
+
+<h3>git remote</h3>
+<ul class="org-ul">
+<li><code>git remote add</code>
+</li>
+</ul>
+
+</section>
+<section id="sec-1-13" >
+
+<h3>git stash</h3>
+<ul class="org-ul">
+<li><code>git stash</code>: stash the changes in a dirty working directory away
+<ul class="org-ul">
+<li><code>git stash list</code>, list all stashed changes
+</li>
+<li><code>git stash pop</code>, apply and delete the top stashed changes
+</li>
+<li><code>git stash apply</code>, apply some specified stashed changes
+</li>
+</ul>
+</li>
+</ul>
+</section>
+
+</section>
+<section>
+<section id="sec-2" >
+
+<h2>Git Helpers</h2>
+<ul class="org-ul">
+<li>tig
+<ul class="org-ul">
+<li><a href="http://jonas.nitro.dk/tig/">http://jonas.nitro.dk/tig/</a>
+</li>
+<li>text-mode interface for Git
+</li>
+</ul>
+</li>
+
+<li>hub
+<ul class="org-ul">
+<li><a href="https://github.com/github/hub">https://github.com/github/hub</a>
+</li>
+<li><code>hub pull-request</code>
+</li>
+</ul>
+</li>
+
+<li>git-summary
+<ul class="org-ul">
+<li><a href="https://github.com/tj/git-extras">https://github.com/tj/git-extras</a>
+</li>
+<li><code>git summary</code>
+</li>
+<li><code>git info</code>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+
+</section>
+<section>
+<section id="sec-3" >
+
+<h2>Git Frontends</h2>
+<ul class="org-ul">
+<li>Emacs magit
+<ul class="org-ul">
+<li><a href="https://github.com/magit/magit">https://github.com/magit/magit</a>
+</li>
+</ul>
+</li>
+
+<li>Vim fugitive
+<ul class="org-ul">
+<li><a href="https://github.com/tpope/vim-fugitive">https://github.com/tpope/vim-fugitive</a>
+</li>
+</ul>
+</li>
+
+<li>Sublime Text
+<ul class="org-ul">
+<li><a href="https://sublimegit.net/">https://sublimegit.net/</a>
+</li>
+</ul>
+</li>
+
+<li>Atom
+<ul class="org-ul">
+<li><a href="https://github.com/diiq/atomatigit">https://github.com/diiq/atomatigit</a>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+</div>
+</div>
+
+<script src="./reveal.js/lib/js/head.min.js"></script>
+<script src="./reveal.js/js/reveal.min.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: true,
+rollingLinks: false,
+keyboard: true,
+overview: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: './reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: './reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: './reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: './reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+ { src: './reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: './reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+]
+});
+</script>
+</body>
+</html>
