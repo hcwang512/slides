@@ -1,0 +1,15 @@
+* How these slides are made
+
+These slides use [[https://github.com/hakimel/reveal.js][reveal.js]].
+
+We write slides in plain text format such as org-mode, markdown, and then use
+[[http://johnmacfarlane.net/pandoc/][pandoc]] to convert the plain text slides to reveal.js html files.
+
+A simple sample command:
+
+=pandoc -s --mathjax -i -t revealjs git.md -o git.html -V theme=moon=
+
+We use [[https://pages.github.com/][GitHub Pages]] for simple public hosting.
+
+Or, if you're the lucky guy and use Emacs [[http://orgmode.org/][org-mode]], you can install [[https://github.com/yjwen/org-reveal][org-reveal]]
+for direct export.

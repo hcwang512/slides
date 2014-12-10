@@ -1,0 +1,115 @@
+#+TITLE: Git tips
+#+AUTHOR: Xiao Hanyu
+#+EMAIL: xiaohanyu1988@gmail.com
+#+OPTIONS: toc:nil
+#+REVEAL_THEME: default
+
+* Git Commands
+
+** git add
+- =git add -i=
+  - interactive add:
+- =git add -p=
+  - patch mode:
+  - useful when you made multiple changes to a single file and you only want to
+    commit some part of the changeset.
+
+** git blame
+- =git blame /some/path/to/some/file=
+  - ask git "where does a specific line of code comes from?"
+
+** git branch
+- =git branch -a=
+  - list all branches, including remote branches
+- =git branch -d=
+  - delete a fully merged branch
+- =git branch -D=
+  - force delete a branch
+
+** git checkout
+- =git checkout .=
+  - remove all changes of all tracked files
+
+** git cherry-pick
+- =git cherry-pick <commit-id>=
+  - import bugfixes from upstream
+
+** git clean
+- =git clean -n=
+  - only show what would and what would not be removed
+- =git clean -f=
+  - force remove
+- =git clean -d=
+  - remove untracked directories
+
+** git clone
+
+- =git clone file://some/path/to/your/repo=
+  - clone from local file system
+- =git clone username@hostname:/some/path/to/remote/repo=
+  - clone from ssh server
+- =git clone --depth 1=
+  - shallow clone
+  - improve clone speed
+  - reduce disk space
+
+** git commit
+- =git commit -a=
+  - amend the previous commit
+
+** git rebase
+- =git rebase -i COMMIT_ID=
+  - p, pick   => use commit
+  - r, reword => use commit, but edit the commit message
+  - e, edit   => use commit, but stop for amending
+  - s, squash => use commit, but meld into previous commit
+  - f, fixup  => like "squash", but discard this commit's log message
+  - x, exec   => run command (the rest of the line) using shell
+
+** git reset
+  - =git reset --hard=
+  - =git reset --soft=
+  - =git reset --mixed=
+
+** git reflog
+- =git reflog show=
+- with
+- =git reset --hard=
+
+** git remote
+- =git remote add=
+
+** git stash
+- =git stash=: stash the changes in a dirty working directory away
+  - =git stash list=, list all stashed changes
+  - =git stash pop=, apply and delete the top stashed changes
+  - =git stash apply=, apply some specified stashed changes
+
+* Git Helpers
+
+- tig
+  - http://jonas.nitro.dk/tig/
+  - text-mode interface for Git
+
+- hub
+  - https://github.com/github/hub
+  - =hub pull-request=
+
+- git-summary
+  - https://github.com/tj/git-extras
+  - =git summary=
+  - =git info=
+
+* Git Frontends
+
+- Emacs magit
+  - https://github.com/magit/magit
+
+- Vim fugitive
+  - https://github.com/tpope/vim-fugitive
+
+- Sublime Text
+  - https://sublimegit.net/
+
+- Atom
+  - https://github.com/diiq/atomatigit
