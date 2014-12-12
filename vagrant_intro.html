@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title></title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="./reveal.js/css/reveal.min.css"/>
+    <style type="text/css">code{white-space: pre;}</style>
+    <link rel="stylesheet" href="./reveal.js/css/theme/simple.css" id="theme">
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+      if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = './reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+      }
+    </script>
+    <!--[if lt IE 9]>
+    <script src="./reveal.js/lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+
+<section id="an-introduction-to-vagrant" class="slide level2">
+<h1>An Introduction to Vagrant</h1>
+<p>王洪城</p>
+<p>2014.12</p>
+<p><span class="citation" data-cites="huhulab">@huhulab</span></p>
+</section>
+<section id="section" class="slide level2">
+<h1></h1>
+<section id="whats-wrong-with-development-environment" class="level3">
+<h3>What’s wrong with development environment</h3>
+<ul>
+<li>it can take too long to set it up</li>
+<li>it can differ too much from testing and production development</li>
+<li>Each developer has a differnt one.
+<ul>
+<li>Easily out of sync with standards</li>
+<li>Many versions of softwares or packages</li>
+<li>It works on my machine</li>
+</ul></li>
+</ul>
+</section>
+<section id="what-is-vagrant" class="level3">
+<h3>What is Vagrant</h3>
+<blockquote>
+<p>…a <strong>developer-friendly interface</strong> for Virtualbox, VMWare…</p>
+</blockquote>
+<blockquote>
+<p>Create and configure lightweight, reproducible, and portable development environments automately</p>
+</blockquote>
+</section>
+<section id="what-can-we-get" class="level3">
+<h3>What can we get</h3>
+<ul>
+<li>Command line tool</li>
+<li>Lowers set up time</li>
+<li>Fully control entire environments and versions</li>
+<li>Eliminates “works on my machine” excuse</li>
+<li>Environment per object</li>
+<li>Shared across the team</li>
+<li>Cooperate with other tools
+<ul>
+<li>Providers like VirtualBox, VMWare, AWS</li>
+<li>Provisions like Chef, Puppet, Ansible, Shell</li>
+</ul></li>
+</ul>
+</section>
+<section id="git-of-the-devlopment-clouds" class="level3">
+<h3>Git of the devlopment clouds</h3>
+<ul>
+<li>For Individual
+<ul>
+<li>Maintain consistency across multiple projects</li>
+<li>Can run multiple environments on a single host machine.</li>
+<li>Easily tear down and rebuild</li>
+</ul></li>
+<li>For Team
+<ul>
+<li>Indentical developemnt environments.</li>
+<li>Consistent and portable</li>
+</ul></li>
+<li>For Company
+<ul>
+<li>Easier onboarding of new talent</li>
+<li>Build once and distribute to teams</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="section-1" class="slide level2">
+<h1></h1>
+<section id="minimum-requirements" class="level3">
+<h3>Minimum requirements</h3>
+<ul>
+<li>VirtualBox</li>
+<li>Ruby</li>
+<li>Vagrant</li>
+</ul>
+</section>
+<section id="quick-start" class="level3">
+<h3>Quick Start</h3>
+<ul>
+<li>$ vagrant box add {title} {url}
+<ul>
+<li>find the avaliable boxes from http://www.vagrantbox.es/</li>
+</ul></li>
+<li>$ vagrant init title</li>
+<li>$ vagrant up</li>
+<li>$ vagrant ssh</li>
+</ul>
+</section>
+<section id="vagrantfile" class="level3">
+<h3>Vagrantfile</h3>
+<ul>
+<li>Simple Ruby code which typically contains a Vagrant configuration block</li>
+<li>First thing loaded by Vagrant</li>
+<li>Basic file created when ‘init’ is called from within a directory</li>
+<li>Add more options for more configuration</li>
+<li>Are portable and meant to be placed under version controll</li>
+</ul>
+</section>
+<section id="boxes" class="level3">
+<h3>Boxes</h3>
+<ul>
+<li>Many base boxes avaliable over the Internet</li>
+<li>you can create your own
+<ul>
+<li>$ vagrant package --base {title} --output {new title}</li>
+</ul></li>
+<li>you can list your base boxes
+<ul>
+<li>$ vagrant box list</li>
+</ul></li>
+<li>you can remove base boxes
+<ul>
+<li>$ vagrant box remove {box name} {provider}</li>
+</ul></li>
+</ul>
+</section>
+<section id="up" class="level3">
+<h3>Up</h3>
+<ul>
+<li>Vagrant runs the virtual machines headless by default</li>
+<li>Vagrant create a new virtual machine based on the base box</li>
+<li>set the visible name of virtual machine</li>
+<li>Manage the network interfaces</li>
+<li>Finally, boots the machine</li>
+</ul>
+</section>
+<section id="ssh" class="level3">
+<h3>SSH</h3>
+<ul>
+<li>Vagrant makes SSH to the virtual amchine easy from the project directory</li>
+<li>Project files are avaliable in the VM at ‘/vagrant’</li>
+<li>The VM has both read and write access to the shared folder</li>
+<li>Gain root sccess use “sudo”</li>
+</ul>
+</section>
+</section>
+<section id="section-2" class="slide level2">
+<h1></h1>
+<section id="shared-folders" class="level3">
+<h3>Shared Folders</h3>
+<ul>
+<li>First shared folder is ‘/vagrant’</li>
+<li>Add shared Folder in vagrantfile</li>
+<li>Options: create, disabled, owner, group, type</li>
+</ul>
+<pre><code>config.vm.synced_folder &quot;host folder&quot;, &quot;VM folder&quot;, disable: True</code></pre>
+</section>
+<section id="nfs" class="level3">
+<h3>NFS</h3>
+<ul>
+<li>the default shared folder implementations have high performance penalties</li>
+</ul>
+<pre><code>config.vm.synced_folder &quot;.&quot;, &quot;/vagrant&quot;, type: &quot;nfs&quot;</code></pre>
+</section>
+</section>
+<section id="section-3" class="slide level2">
+<h1></h1>
+<section id="networking" class="level3">
+<h3>Networking</h3>
+<ul>
+<li>Forwarded Ports</li>
+<li>Host-Only Networking</li>
+<li>Bridged Networking</li>
+</ul>
+</section>
+<section id="forwarded-ports" class="level3">
+<h3>Forwarded Ports</h3>
+<ul>
+<li>Basic Usage</li>
+<li>Collision Detection and Correction</li>
+<li><p>Choose protocol TCP or UDP</p>
+<pre><code>config.vm.forwarded_port 80, 8080, protocol: &quot;udp&quot;, auto_correct: True
+config.vm.usable_port_range = (2200..2250)</code></pre></li>
+<li>Pros
+<ul>
+<li>simple to set up</li>
+<li>accessible from outside computer</li>
+</ul></li>
+<li>Cons
+<ul>
+<li>Explicit about every port</li>
+<li>Any computer on local network can access your computer</li>
+<li>Can not forword to port leses than 1024 on the host system</li>
+</ul></li>
+</ul>
+</section>
+<section id="host-only-networking" class="level3">
+<h3>Host-Only Networking</h3>
+<ul>
+<li>Specify a static IP for the VM</li>
+<li><p>basic usage</p>
+<pre><code>config.vm.network &quot;hostonly&quot;, &quot;192.168.33.10&quot;</code></pre></li>
+<li>Pros
+<ul>
+<li>The network is secure</li>
+<li>Multiple VMs can communicate with each other and host</li>
+<li>The Vms can also communicate with the host itself</li>
+</ul></li>
+<li>Cons
+<ul>
+<li>the network is isolated from coworkers</li>
+</ul></li>
+</ul>
+</section>
+<section id="bridged-networking" class="level3">
+<h3>Bridged Networking</h3>
+<ul>
+<li>Use DHCP to assign a IP to the VM</li>
+<li><p>Basic usage</p>
+<pre><code>config.vm.network &quot;bridged&quot;</code></pre></li>
+<li>Pros
+<ul>
+<li>Have a IP and no isolation</li>
+</ul></li>
+<li>Cons
+<ul>
+<li>can not specify a static IP</li>
+</ul></li>
+</ul>
+</section>
+<section id="composing-networking-options" class="level3">
+<h3>Composing Networking Options</h3>
+<ul>
+<li><p>Vagrant allows you to enable multiple network options</p>
+<pre><code>config.vm.forwarded_port 80, 8080
+config.vm.network &quot;hostonly&quot;, &quot;192.168.33.10&quot;
+config.vm.network &quot;bridged&quot;</code></pre></li>
+</ul>
+</section>
+</section>
+<section id="section-4" class="slide level2">
+<h1></h1>
+<section id="multiple-machine" class="level3">
+<h3>multiple machine</h3>
+<ul>
+<li>Quickly establish a network of multi-machine environment, such as a web server, db server</li>
+<li>Establish a distributed system, learn how they interact</li>
+<li>Test communications between API and other components</li>
+<li>Disaster simulation, like network disconnection, the machine crashes, connection timeouts, etc.</li>
+</ul>
+</section>
+<section id="defining-multiple-machine" class="level3">
+<h3>defining multiple machine</h3>
+<pre><code>Vagrant.configure(&quot;2&quot;) do |config|
+    config.vm.box = &quot;precise64&quot;
+
+    config.vm.define &quot;web&quot; do |web| 
+        web.vm.forward_port 80, 8080
+        web.vm.provision :shell, path: &quot;provision.sh&quot;
+    end
+
+    config.vm.define &quot;db&quot; do |db| 
+        # fill this in the same way.
+    end 
+end</code></pre>
+</section>
+<section id="controlling-multiple-machines" class="level3">
+<h3>Controlling Multiple Machines</h3>
+<ul>
+<li>Most commands, such as up, destroy, and reload now take an argument with the name of the machine to affect</li>
+<li>specify multiple targets in the same command</li>
+<li>or use a regular expression</li>
+</ul>
+<pre><code>$ vagrant reload web
+$ vagrant status
+$ vagrant reload node1 node2 node3
+$ vagrant reload /node\d/</code></pre>
+</section>
+<section id="communication-between-machines" class="level3">
+<h3>Communication Between Machines</h3>
+<ul>
+<li>define a host-only network on the machines</li>
+</ul>
+<pre><code>Vagrant.configure(&quot;2&quot;) do |config|
+    config.vm.box = &quot;precise64&quot;
+
+    config.vm.define &quot;web&quot; do |web|
+        web.vm.forward_port 80, 8080
+        web.vm.provision :shell, path: &quot;provision.sh&quot;
+        web.vm.network :hostonly, &quot;192.168.33.10&quot;
+    end
+    
+    config.vm.define &quot;db&quot; do |db|
+        db.vm.network :hostonly, &quot;192.168.33.11&quot;
+    end
+    
+end</code></pre>
+</section>
+</section>
+<section id="section-5" class="slide level2">
+<h1></h1>
+<section id="provisions" class="level3">
+<h3>Provisions</h3>
+<ul>
+<li><p>automatically install software, alter configurations, and more on the machine as part of the vagrant up process</p></li>
+<li>Shell, Ansible, Chef, Puppet</li>
+<li>when vagrant up, provisioning is run</li>
+<li>use –provision to force provisioing or –no-provision crossly</li>
+<li><p>–provision-with to run a specify provisioner</p></li>
+</ul>
+</section>
+<section id="provisioning-with-shell" class="level3">
+<h3>provisioning with Shell</h3>
+<pre><code>#!/usr/bin/env bash
+echo &quot;Installing Apache and setting it up...&quot;
+apt-get update &gt;/dev/null 2&gt;&amp;1
+apt-get install -y apache2 &gt;/dev/null 2&gt;&amp;1
+rm -rf /var/www
+ln -fs /vagrant /var/www
+
+
+config.vm.provision &quot;shell&quot;, path: &quot;provision.sh&quot;
+</code></pre>
+</section>
+<section id="provisioning-with-ansible" class="level3">
+<h3>provisioning with Ansible</h3>
+<ul>
+<li>Inventory File
+<ul>
+<li>generate by vagrant</li>
+<li>specify a inventory resource</li>
+</ul></li>
+<li>playbook</li>
+</ul>
+<pre><code>---
+- hosts: all
+    sudo: yes
+    vars:
+    whoami: &quot;{{ lookup(&#39;env&#39;, &#39;USER&#39;) }}&quot;
+    user_home: &quot;{{ lookup(&#39;env&#39;, &#39;HOME&#39;) }}&quot;
+  tasks:
+    - name: install mysql
+      apt: pkg={{item}} state=present
+      with_items:
+        - mysql-server
+        - mysql-client</code></pre>
+<ul>
+<li>running ansible</li>
+</ul>
+<pre><code>Vagrant.configure(&quot;2&quot;) do |config|
+  config.vm.provision &quot;ansible&quot; do |ansible|
+    ansible.playbook = &quot;playbook.yml&quot;
+  end
+end</code></pre>
+</section>
+<section id="why-use-ansible" class="level3">
+<h3>why use Ansible</h3>
+<ul>
+<li>Shell script is simple</li>
+<li>Ansible can be run multiple times safely</li>
+<li>Absible can easily be run against multiple servers</li>
+<li>Ansible can target certain servers easily</li>
+</ul>
+</section>
+</section>
+<section id="some-pitfalls" class="slide level2">
+<h1>Some pitfalls</h1>
+<ul>
+<li><a href="http://segmentfault.com/blog/fenbox/1190000000264347">static file refresh error when using Appache and Nginx</a></li>
+<li><a href="http://serverfault.com/questions/398414/vagrant-set-default-share-permissions">file permission error</a></li>
+<li><a href="http://type.so/linux/vagrant-challenges.html">cann not map vagrant project with VM</a></li>
+</ul>
+</section>
+<section id="faq" class="slide level2">
+<h1>FAQ</h1>
+<ul>
+<li><a href="http://stackoverflow.com/questions/8225820/where-is-vagrant-saving-changes-to-the-vm/8331810#8331810">Where is Vagrant saving changes to the VM?</a></li>
+<li><a href="http://stackoverflow.com/questions/16647069/should-i-use-vagrant-or-docker-io-for-creating-an-isolated-environment/21314566#21314566">Should I use Vagrant or Docker.io for creating an isolated environment?</a></li>
+<li><a href="http://stackoverflow.com/questions/22717428/vagrant-error-failed-to-mount-folders-in-linux-guest/23752848#23752848">Vagrant error : Failed to mount folders in Linux guest</a></li>
+<li><a href="http://stackoverflow.com/questions/10709334/how-to-connect-to-mysql-server-inside-virtualbox-vagrant/10794530#10794530">How to connect to Mysql Server inside VirtualBox Vagrant?</a></li>
+</ul>
+</section>
+    </div>
+  </div>
+
+
+  <script src="./reveal.js/lib/js/head.min.js"></script>
+  <script src="./reveal.js/js/reveal.min.js"></script>
+
+  <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        theme: 'default', // available themes are in /css/theme
+        transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: './reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: './reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: './reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+//          { src: './reveal.js/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; }, }
+//          { src: './reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+]});
+    </script>
+    </body>
+</html>
